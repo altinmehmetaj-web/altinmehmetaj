@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 72" role="img" aria-labelledby="title desc">
-<title id="title">Logo AM — Altin Mehmetaj</title>
-<desc id="desc">Monogramma AM in stile moderno e professionale</desc>
-<rect width="240" height="72" rx="18" fill="#0a1020"/>
-<path d="M18 50V22l12 14 12-14v28" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M45 50l14-28 14 28M51 39h16" fill="none" stroke="#2f6bff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="88" y="31" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#ffffff">ALTIN</text>
-<text x="88" y="51" font-family="Arial, Helvetica, sans-serif" font-size="10" letter-spacing="3" fill="#aeb9d1">MEHMETAJ</text>
-</svg>
