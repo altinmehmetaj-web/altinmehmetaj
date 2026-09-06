@@ -272,3 +272,99 @@ textarea{resize:vertical}
   .quote-band p{font-size:9px;letter-spacing:.2em}
   .contact-form-wrap{padding:24px}
 }
+/* ================================
+   EVENTO - FORMATO DESKTOP
+================================ */
+
+.event-card {
+  width: 100%;
+  max-width: 900px;
+  margin: 60px auto;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #071126;
+  box-shadow: 0 25px 70px rgba(0, 20, 60, 0.15);
+}
+
+.event-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.event-info {
+  padding: 28px 30px 32px;
+  color: white;
+}
+
+.event-info h3 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.event-info p {
+  margin: 0 0 22px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.event-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 24px;
+  background: #2864ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .event-card {
+    width: calc(100% - 28px);
+    max-width: 430px;
+    margin: 35px auto;
+    border-radius: 14px;
+  }
+
+  .event-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+  }
+
+  .event-info {
+    padding: 20px 18px 22px;
+  }
+
+  .event-info h3 {
+    font-size: 21px;
+    line-height: 1.05;
+  }
+
+  .event-info p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .event-whatsapp {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 18px;
+    font-size: 12px;
+  }
+}
