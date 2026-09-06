@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Evento 10 Settembre 2026 | Altin Mehmetaj</title>
+
+  <meta
+    name="description"
+    content="10 settembre 2026 · Tiepolo Hotel Vicenza · 20:30. Scopri il prossimo evento."
+  >
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =====================================================
+       EVENT PAGE
+       ===================================================== */
+
+    .event-page {
+      min-height: 100vh;
+      background: #f5f7fb;
+      color: #071126;
+    }
+
+    .event-page-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 10;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 25px 6%;
+    }
+
+    .event-page-logo img {
+      width: 52px;
+      height: auto;
+    }
+
+    .event-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 11px 18px;
+
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+
+      color: #fff;
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      backdrop-filter: blur(10px);
+
+      transition: .3s ease;
+    }
+
+    .event-back:hover {
+      background: #fff;
+      color: #071126;
+    }
+
+
+    /* HERO */
+
+    .event-page-hero {
+      position: relative;
+
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          120deg,
+          #050b1c 0%,
+          #071126 55%,
+          #111d46 100%
+        );
+
+      color: #fff;
+    }
+
+    .event-page-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 600px;
+      height: 600px;
+
+      right: -200px;
+      top: -200px;
+
+      border-radius: 50%;
+
+      background: rgba(80,110,255,.18);
+
+      filter: blur(40px);
+    }
+
+    .event-page-inner {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1180px;
+
+      margin: 0 auto;
+
+      padding: 140px 6% 100px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 420px;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+
+    /* TESTO */
+
+    .event-page-kicker {
+      display: inline-block;
+
+      margin-bottom: 25px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: .2em;
+
+      opacity: .65;
+    }
+
+    .event-page-title {
+      margin: 0;
+
+      font-size: clamp(55px, 8vw, 105px);
+
+      line-height: .86;
+
+      letter-spacing: -.055em;
+    }
+
+    .event-page-title span {
+      display: block;
+      opacity: .65;
+    }
+
+    .event-page-description {
+      max-width: 590px;
+
+      margin-top: 35px;
+
+      font-size: 17px;
+      line-height: 1.7;
+
+      color: rgba(255,255,255,.68);
+    }
+
+
+    /* INFO */
+
+    .event-page-info {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 25px;
+
+      margin-top: 45px;
+    }
+
+    .event-info-item {
+      padding-top: 18px;
+
+      border-top: 1px solid rgba(255,255,255,.2);
+    }
+
+    .event-info-label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 10px;
+
+      letter-spacing: .15em;
+
+      opacity: .5;
+    }
+
+    .event-info-item strong {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+
+    /* POSTER */
+
+    .event-page-poster {
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+    }
+
+    .event-page-poster img {
+      display: block;
+
+      width: 100%;
+      max-width: 420px;
+
+      height: auto;
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 35px 90px rgba(0,0,0,.4);
+    }
+
+
+    /* CTA */
+
+    .event-page-cta {
+      margin-top: 42px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .event-page-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      padding: 16px 25px;
+
+      border-radius: 999px;
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: .04em;
+
+      transition: .3s ease;
+    }
+
+    .event-page-button-primary {
+      background: #fff;
+      color: #071126;
+    }
+
+    .event-page-button-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .event-page-button-secondary {
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+    }
+
+    .event-page-button-secondary:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .event-page-inner {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+        padding-top: 130px;
+      }
+
+      .event-page-title {
+        font-size: clamp(52px, 15vw, 82px);
+      }
+
+      .event-page-description {
+        font-size: 15px;
+      }
+
+      .event-page-poster {
+        order: 2;
+      }
+
+      .event-page-poster img {
+        max-width: 380px;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .event-page-header {
+        padding: 20px;
+      }
+
+      .event-page-logo img {
+        width: 45px;
+      }
+
+      .event-back {
+        font-size: 11px;
+        padding: 9px 14px;
+      }
+
+      .event-page-inner {
+        padding: 115px 22px 70px;
+      }
+
+      .event-page-info {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+        margin-top: 35px;
+      }
+
+      .event-page-cta {
+        flex-direction: column;
+      }
+
+      .event-page-button {
+        width: 100%;
+      }
+
+      .event-page-poster img {
+        width: 100%;
+        max-width: 100%;
+
+        border-radius: 14px;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <main class="event-page">
+
+
+    <!-- HEADER -->
+
+    <header class="event-page-header">
+
+      <a href="index.html" class="event-page-logo">
+        <img
+          src="assets/logo-am.svg"
+          alt="AM"
+        >
+      </a>
+
+      <a href="index.html" class="event-back">
+        ← TORNA AL SITO
+      </a>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="event-page-hero">
+
+      <div class="event-page-inner">
+
+
+        <!-- TESTO -->
+
+        <div class="event-page-copy">
+
+          <span class="event-page-kicker">
+            PROSSIMO EVENTO
+          </span>
+
+          <h1 class="event-page-title">
+            UNA NUOVA
+            <span>VISIONE.</span>
+          </h1>
+
+          <p class="event-page-description">
+            Una serata dedicata a persone, idee e nuove prospettive.
+            Un'occasione per incontrarsi, condividere esperienze,
+            confrontarsi e guardare al futuro.
+          </p>
+
+
+          <!-- INFO -->
+
+          <div class="event-page-info">
+
+            <div class="event-info-item">
+              <span class="event-info-label">
+                DATA
+              </span>
+
+              <strong>
+                10 SETTEMBRE 2026
+              </strong>
+            </div>
+
+
+            <div class="event-info-item">
+              <span class="event-info-label">
+                ORA
+              </span>
+
+              <strong>
+                20:30
+              </strong>
+            </div>
+
+
+            <div class="event-info-item">
+              <span class="event-info-label">
+                LOCATION
+              </span>
+
+              <strong>
+                TIEPOLO HOTEL<br>
+                VICENZA
+              </strong>
+            </div>
+
+          </div>
+
+
+          <!-- CTA -->
+
+          <div class="event-page-cta">
+
+            <a
+              href="https://wa.me/39351812387?text=Ciao%20Altin%2C%20vorrei%20richiedere%20il%20mio%20invito%20per%20l%27evento%20del%2010%20settembre%20alle%2020%3A30%20al%20Tiepolo%20Hotel%20di%20Vicenza."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="event-page-button event-page-button-primary"
+            >
+              RICHIEDI IL TUO INVITO →
+            </a>
+
+            <a
+              href="index.html"
+              class="event-page-button event-page-button-secondary"
+            >
+              TORNA AL SITO
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- POSTER -->
+
+        <div class="event-page-poster">
+
+          <img
+            src="assets/evento-10-settembre.png"
+            alt="Evento 10 settembre 2026 - Tiepolo Hotel Vicenza"
+          >
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
