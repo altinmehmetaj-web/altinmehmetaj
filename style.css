@@ -358,4 +358,248 @@ textarea{resize:vertical}
   }
 
 }
+/* =========================================================
+   EVENT CARD
+   ========================================================= */
 
+.event-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-top: 55px;
+}
+
+.event-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px 1fr 80px;
+  align-items: center;
+  gap: 45px;
+
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  padding: 42px 48px;
+
+  background: #071126;
+  color: #ffffff;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 25px 70px rgba(0, 20, 60, 0.15);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+
+  right: -120px;
+  top: -180px;
+
+  background: rgba(76, 116, 255, .18);
+
+  border-radius: 50%;
+  filter: blur(20px);
+}
+
+.event-card-link:hover .event-card {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 35px 90px rgba(0, 20, 60, 0.22);
+}
+
+
+/* DATA */
+
+.event-card-date {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.event-card-date > span {
+  font-size: 82px;
+  line-height: .8;
+  font-weight: 700;
+  letter-spacing: -5px;
+}
+
+.event-card-date div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.event-card-date strong {
+  font-size: 15px;
+  letter-spacing: .08em;
+}
+
+.event-card-date small {
+  font-size: 12px;
+  opacity: .6;
+  letter-spacing: .08em;
+}
+
+
+/* CONTENUTO */
+
+.event-card-main {
+  position: relative;
+  z-index: 2;
+}
+
+.event-label {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .18em;
+
+  opacity: .65;
+}
+
+.event-card-main h3 {
+  margin: 0;
+
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: .92;
+
+  letter-spacing: -.04em;
+}
+
+.event-card-main h3 strong {
+  font-weight: 700;
+}
+
+.event-card-main p {
+  max-width: 560px;
+
+  margin: 22px 0 25px;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: rgba(255,255,255,.68);
+}
+
+
+/* LOCATION */
+
+.event-card-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.event-card-location > span {
+  font-size: 18px;
+}
+
+.event-card-location div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.event-card-location strong {
+  font-size: 14px;
+}
+
+.event-card-location small {
+  font-size: 12px;
+  opacity: .55;
+}
+
+
+/* FRECCIA */
+
+.event-card-arrow {
+  position: relative;
+  z-index: 2;
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+
+  font-size: 25px;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.event-card-link:hover .event-card-arrow {
+  background: #ffffff;
+  color: #071126;
+  transform: translateX(5px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .event-card-link {
+    margin-top: 35px;
+  }
+
+  .event-card {
+    display: block;
+
+    padding: 30px 25px;
+
+    border-radius: 18px;
+  }
+
+  .event-card-date {
+    margin-bottom: 35px;
+  }
+
+  .event-card-date > span {
+    font-size: 64px;
+  }
+
+  .event-card-date strong {
+    font-size: 13px;
+  }
+
+  .event-card-main h3 {
+    font-size: 42px;
+  }
+
+  .event-card-main p {
+    font-size: 14px;
+    margin-top: 18px;
+  }
+
+  .event-card-arrow {
+    margin-top: 28px;
+
+    width: 48px;
+    height: 48px;
+  }
+}
