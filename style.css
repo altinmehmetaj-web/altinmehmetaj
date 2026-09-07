@@ -1433,3 +1433,130 @@ textarea{resize:vertical}
   }
 
 }
+/* =========================
+   CREATOR CTA
+========================= */
+
+.creator-cta {
+  position: relative;
+  overflow: hidden;
+  background: #f4f6fa;
+  color: #07111f;
+  padding: 110px 7vw;
+}
+
+.creator-cta::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -180px;
+  top: -180px;
+  background: radial-gradient(
+    circle,
+    rgba(40, 110, 255, 0.18),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.creator-cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.creator-cta .section-kicker {
+  color: #315cff;
+  margin-bottom: 22px;
+}
+
+.creator-cta h2 {
+  margin: 0 0 28px;
+  font-size: clamp(44px, 5vw, 78px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.creator-cta h2 strong {
+  color: #315cff;
+}
+
+.creator-cta-content p {
+  max-width: 680px;
+  margin: 0 0 35px;
+
+  color: rgba(7, 17, 31, 0.68);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.creator-cta .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.creator-cta-side {
+  border-top: 1px solid rgba(7, 17, 31, 0.16);
+  border-bottom: 1px solid rgba(7, 17, 31, 0.16);
+
+  padding: 28px 0;
+
+  display: grid;
+  grid-template-columns: 65px 1fr;
+  gap: 20px;
+}
+
+.creator-cta-number {
+  color: #315cff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.creator-cta-side strong {
+  font-size: 18px;
+  letter-spacing: 0.05em;
+}
+
+.creator-cta-side p {
+  margin: 8px 0 0;
+  color: rgba(7, 17, 31, 0.55);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+
+  .creator-cta {
+    padding: 75px 24px;
+  }
+
+  .creator-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .creator-cta h2 {
+    font-size: clamp(40px, 12vw, 58px);
+  }
+
+  .creator-cta-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .creator-cta .btn-primary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+}
