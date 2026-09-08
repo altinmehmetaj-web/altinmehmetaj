@@ -4,7 +4,7 @@ const events = [
     place: "RICCIONE",
     title: "Creator Summit",
     text: "Un appuntamento dedicato a creator, marketing, tecnologia e community.",
-    link: "#contatti",
+    link: "#contact",
     cta: "Richiedi informazioni"
   },
   {
@@ -12,14 +12,20 @@ const events = [
     place: "DA DEFINIRE",
     title: "Prossimo evento",
     text: "Questa scheda è pronta per essere aggiornata con il prossimo appuntamento.",
-    link: "#contatti",
+    link: "#contact",
     cta: "Resta aggiornato"
   }
 ];
 
-const eventsGrid = document.getElementById("eventsGrid");
-if (eventsGrid) {
-  eventsGrid.innerHTML = events.map(event => `
+
+/* ==========================================
+   EVENTI
+   ========================================== */
+
+const eventsContainer = document.getElementById("eventsContainer");
+
+if (eventsContainer) {
+  eventsContainer.innerHTML = events.map(event => `
     <article class="event-card reveal">
       <span class="event-date">${event.date} · ${event.place}</span>
       <h3>${event.title}</h3>
@@ -29,47 +35,158 @@ if (eventsGrid) {
   `).join("");
 }
 
+
+/* ==========================================
+   MENU MOBILE
+   ========================================== */
+
 const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
-menuToggle?.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
-});
-document.querySelectorAll(".nav a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+const mainNav = document.getElementById("mainNav");
 
-const progress = document.getElementById("progress");
-window.addEventListener("scroll", () => {
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
-});
+if (menuToggle && mainNav) {
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
+  menuToggle.addEventListener("click", () => {
+
+    const isOpen = mainNav.classList.toggle("open");
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      isOpen ? "true" : "false"
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Chiudi menu" : "Apri menu"
+    );
+
   });
-}, {threshold: .08});
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* Chiude il menu quando clicchi una voce */
+
+  mainNav.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      mainNav.classList.remove("open");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuToggle.setAttribute(
+        "aria-label",
+        "Apri menu"
+      );
+
+    });
+
+  });
+
+}
+
+
+/* ==========================================
+   BARRA PROGRESSO
+   ========================================== */
+
+const progressBar = document.getElementById("progressBar");
+
+if (progressBar) {
+
+  window.addEventListener("scroll", () => {
+
+    const height =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress =
+      height > 0
+        ? (window.scrollY / height) * 100
+        : 0;
+
+    progressBar.style.width = `${progress}%`;
+
+  });
+
+}
+
+
+/* ==========================================
+   ANIMAZIONI
+   ========================================== */
+
+const observer = new IntersectionObserver(
+  entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.08
+  }
+);
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+
+
+/* ==========================================
+   ANNO AUTOMATICO
+   ========================================== */
+
+const year = document.getElementById("year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+
+/* ==========================================
+   FORM CONTATTI → WHATSAPP
+   ========================================== */
 
 const form = document.getElementById("contactForm");
-form?.addEventListener("submit", e => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const nome = data.get("nome") || "";
-  const cognome = data.get("cognome") || "";
-  const email = data.get("email") || "";
-  const telefono = data.get("telefono") || "";
-  const messaggio = data.get("messaggio") || "";
-  const text =
+
+if (form) {
+
+  form.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const data = new FormData(form);
+
+    const nome = data.get("nome") || "";
+    const cognome = data.get("cognome") || "";
+    const email = data.get("email") || "";
+    const telefono = data.get("telefono") || "";
+    const messaggio = data.get("messaggio") || "";
+
+    const text =
 `Ciao Altin, sono ${nome} ${cognome}.
 Email: ${email}
 Telefono: ${telefono}
 Messaggio: ${messaggio}
 
 Ho letto la Privacy Policy e acconsento al trattamento dei dati per essere ricontattato in relazione alla mia richiesta.`;
-  window.open(`https://wa.me/3518112387?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-});
+
+    window.open(
+      `https://wa.me/393518112387?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener"
+    );
+
+  });
+
+}
