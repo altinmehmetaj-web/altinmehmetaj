@@ -234,7 +234,7 @@ textarea{resize:vertical}
   }
   .main-nav.open{display:flex}
   .main-nav a{padding:13px;font-size:11px}
-  .hero{min-height:940px;background-position:58% 35%}
+  .hero{min-height:940px;background-position:50% 35%}
   .hero:before{
     background:linear-gradient(90deg,rgba(4,10,23,.9),rgba(4,10,23,.32)),
                linear-gradient(0deg,rgba(4,10,23,.95),transparent 55%)
