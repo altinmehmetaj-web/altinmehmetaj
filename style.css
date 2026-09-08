@@ -1617,7 +1617,7 @@ textarea{resize:vertical}
 
 .footer-logo img {
   display: block;
-  width: min(360px, 72vw);
+  width: min(240px, 58vw);
   max-width: 100%;
   height: auto;
   object-fit: contain;
@@ -1684,7 +1684,7 @@ textarea{resize:vertical}
   }
 
   .footer-logo img {
-    width: min(300px, 82vw);
+    width: min(210px, 65vw);
   }
 
   .footer-tagline {
