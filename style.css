@@ -1742,3 +1742,70 @@ textarea{resize:vertical}
     line-height: 1.5;
   }
 }
+/* ==========================================
+   PULSANTE PARLIAMONE - OPPORTUNITÀ
+   ========================================== */
+
+.opportunity .btn-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+
+  background: #315cff !important;
+  color: #ffffff !important;
+
+  padding: 18px 30px !important;
+  min-height: 58px !important;
+
+  border: 0 !important;
+  border-radius: 16px !important;
+
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+  text-decoration: none !important;
+
+  box-sizing: border-box !important;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease !important;
+}
+
+.opportunity .btn-primary span {
+  display: inline-block !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+}
+
+.opportunity .btn-primary:hover {
+  background: #244fe8 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(49, 92, 255, 0.25);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .opportunity .btn-primary {
+    width: 100% !important;
+    min-height: 58px !important;
+    padding: 18px 24px !important;
+
+    border-radius: 16px !important;
+
+    font-size: 15px !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .opportunity .btn-primary span {
+    font-size: 21px !important;
+  }
+
+}
