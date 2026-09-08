@@ -1879,3 +1879,24 @@ textarea{resize:vertical}
   }
 
 }
+/* ==========================================
+   VOCI SPECIALI MENU MOBILE
+   ========================================== */
+
+.mobile-menu-special {
+  display: none !important;
+}
+
+@media (max-width: 800px) {
+
+  .mobile-menu-special {
+    display: block !important;
+    margin-top: 4px;
+    padding: 15px 13px !important;
+    border-top: 1px solid rgba(255,255,255,.10);
+    color: #8ea7ff !important;
+    font-weight: 800 !important;
+    letter-spacing: .14em !important;
+  }
+
+}
