@@ -745,15 +745,97 @@ document.addEventListener("DOMContentLoaded", function () {
               <span>FACEBOOK</span><strong>Altin Mehmetaj →</strong>
             </a>
           </div>
-        </div>
+          
 <div class="contact-form-wrap">
   <div class="form-label">INVIAMI UN MESSAGGIO</div>
-  <div class="hs-form-frame"
-       data-region="eu1"
-       data-form-id="1ac89c46-e6be-423f-beae-c46ab212ef7f"
-       data-portal-id="149279297">
-    
-        </div>
+
+  <form
+    id="contactForm"
+    action="https://formspree.io/f/moeqyjgg"
+    method="POST"
+  >
+
+    <div class="form-row">
+      <label>
+        Nome
+        <input
+          type="text"
+          name="nome"
+          autocomplete="given-name"
+          required
+        >
+      </label>
+
+      <label>
+        Cognome
+        <input
+          type="text"
+          name="cognome"
+          autocomplete="family-name"
+          required
+        >
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>
+        Email
+        <input
+          type="email"
+          name="email"
+          autocomplete="email"
+          required
+        >
+      </label>
+
+      <label>
+        Telefono
+        <input
+          type="tel"
+          name="telefono"
+          autocomplete="tel"
+      >
+      </label>
+    </div>
+
+    <label>
+      Messaggio
+      <textarea
+        name="messaggio"
+        rows="5"
+        required
+      ></textarea>
+    </label>
+
+    <label class="consent">
+      <input
+        type="checkbox"
+        name="privacy"
+        value="Accettata"
+        required
+      >
+
+      <span>
+        Ho letto la
+        <a href="privacy.html">Privacy Policy</a>
+        e acconsento al trattamento dei dati personali
+        per la gestione della mia richiesta.
+      </span>
+    </label>
+
+    <button
+      type="submit"
+      class="btn btn-primary btn-submit"
+    >
+      INVIA RICHIESTA <span>→</span>
+    </button>
+
+    <p class="form-note">
+      I dati vengono utilizzati esclusivamente per rispondere alla tua richiesta,
+      secondo quanto indicato nella Privacy Policy.
+    </p>
+
+  </form> 
       </div>
     </section>
   </main>
@@ -786,7 +868,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </footer>
   
-<script src="https://js-eu1.hsforms.net/forms/embed/149279297.js" defer></script>
 <script src="script.js"></script>
 
 </body>
