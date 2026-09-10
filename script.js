@@ -151,5 +151,115 @@ const year = document.getElementById("year");
 if (year) {
   year.textContent = new Date().getFullYear();
 }
+/* ============================================================
+   CAROSELLO TESTIMONIANZE
+   ============================================================ */
 
+const testimonialCards = document.querySelectorAll(".testimonial-card");
+const testimonialDots = document.querySelectorAll(".testimonial-dot");
+const testimonialPrev = document.querySelector(".testimonial-prev");
+const testimonialNext = document.querySelector(".testimonial-next");
+const testimonialCurrent = document.querySelector(".testimonial-current");
+
+let testimonialIndex = 0;
+let testimonialTimer;
+
+
+/* MOSTRA TESTIMONIANZA */
+
+function showTestimonial(index) {
+
+  if (!testimonialCards.length) return;
+
+  if (index < 0) {
+    index = testimonialCards.length - 1;
+  }
+
+  if (index >= testimonialCards.length) {
+    index = 0;
+  }
+
+  testimonialIndex = index;
+
+
+  testimonialCards.forEach((card, i) => {
+    card.classList.toggle("active", i === testimonialIndex);
+  });
+
+
+  testimonialDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === testimonialIndex);
+  });
+
+
+  if (testimonialCurrent) {
+    testimonialCurrent.textContent =
+      String(testimonialIndex + 1).padStart(2, "0");
+  }
+}
+
+
+/* SUCCESSIVA */
+
+function nextTestimonial() {
+  showTestimonial(testimonialIndex + 1);
+  restartTestimonialTimer();
+}
+
+
+/* PRECEDENTE */
+
+function prevTestimonial() {
+  showTestimonial(testimonialIndex - 1);
+  restartTestimonialTimer();
+}
+
+
+/* TIMER AUTOMATICO */
+
+function startTestimonialTimer() {
+
+  testimonialTimer = setInterval(() => {
+    showTestimonial(testimonialIndex + 1);
+  }, 6000);
+
+}
+
+
+function restartTestimonialTimer() {
+
+  clearInterval(testimonialTimer);
+  startTestimonialTimer();
+
+}
+
+
+/* FRECCE */
+
+testimonialNext?.addEventListener("click", nextTestimonial);
+testimonialPrev?.addEventListener("click", prevTestimonial);
+
+
+/* PALLINI */
+
+testimonialDots.forEach((dot, index) => {
+
+  dot.addEventListener("click", () => {
+
+    showTestimonial(index);
+    restartTestimonialTimer();
+
+  });
+
+});
+
+
+/* AVVIO */
+
+if (testimonialCards.length) {
+
+  showTestimonial(0);
+  startTestimonialTimer();
+
+}
 
