@@ -262,4 +262,281 @@ if (testimonialCards.length) {
   startTestimonialTimer();
 
 }
+/* ============================================================
+   GESTIONE COOKIE
+   ============================================================ */
+
+(function () {
+
+  const COOKIE_KEY = "altin_cookie_preferences";
+
+  const banner = document.getElementById("cookieBanner");
+  const modal = document.getElementById("cookieModal");
+
+  const accept = document.getElementById("cookieAccept");
+  const reject = document.getElementById("cookieReject");
+  const settings = document.getElementById("cookieSettings");
+
+  const close = document.getElementById("cookieClose");
+  const modalClose = document.getElementById("cookieModalClose");
+
+  const save = document.getElementById("cookieSave");
+  const external = document.getElementById("cookieExternal");
+
+  const preferencesButton =
+    document.getElementById("cookiePreferences");
+
+
+  /* Se il banner non esiste in una pagina,
+     non facciamo nulla */
+
+  if (!banner) return;
+
+
+  function getPreferences() {
+
+    try {
+
+      const saved =
+        localStorage.getItem(COOKIE_KEY);
+
+      return saved
+        ? JSON.parse(saved)
+        : null;
+
+    } catch (error) {
+
+      return null;
+
+    }
+
+  }
+
+
+  function savePreferences(preferences) {
+
+    localStorage.setItem(
+      COOKIE_KEY,
+      JSON.stringify(preferences)
+    );
+
+    applyPreferences(preferences);
+
+    banner.classList.remove("show");
+    modal.classList.remove("show");
+
+    modal.setAttribute("aria-hidden", "true");
+
+  }
+
+
+  function applyPreferences(preferences) {
+
+    if (!preferences) return;
+
+
+    /*
+     * CONTENUTI ESTERNI
+     * YouTube viene caricato solo se autorizzato.
+     */
+
+    if (preferences.external === true) {
+
+      document
+        .querySelectorAll("[data-cookie-youtube]")
+        .forEach(function (element) {
+
+          const src =
+            element.getAttribute("data-cookie-youtube");
+
+          if (!element.querySelector("iframe")) {
+
+            const iframe =
+              document.createElement("iframe");
+
+            iframe.src = src;
+            iframe.title =
+              element.getAttribute("data-title") ||
+              "Video YouTube";
+
+            iframe.allow =
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+
+            iframe.allowFullscreen = true;
+
+            element.innerHTML = "";
+            element.appendChild(iframe);
+
+          }
+
+        });
+
+    }
+
+  }
+
+
+  function showBanner() {
+
+    banner.classList.add("show");
+
+  }
+
+
+  function openSettings() {
+
+    const preferences = getPreferences();
+
+    if (preferences) {
+
+      external.checked =
+        preferences.external === true;
+
+    } else {
+
+      external.checked = false;
+
+    }
+
+    modal.classList.add("show");
+
+    modal.setAttribute("aria-hidden", "false");
+
+  }
+
+
+  function closeSettings() {
+
+    modal.classList.remove("show");
+
+    modal.setAttribute("aria-hidden", "true");
+
+  }
+
+
+  /* ACCETTA TUTTI */
+
+  accept?.addEventListener("click", function () {
+
+    savePreferences({
+
+      necessary: true,
+      external: true
+
+    });
+
+  });
+
+
+  /* RIFIUTA */
+
+  reject?.addEventListener("click", function () {
+
+    savePreferences({
+
+      necessary: true,
+      external: false
+
+    });
+
+  });
+
+
+  /* X = nessun consenso */
+
+  close?.addEventListener("click", function () {
+
+    savePreferences({
+
+      necessary: true,
+      external: false
+
+    });
+
+  });
+
+
+  /* PERSONALIZZA */
+
+  settings?.addEventListener(
+    "click",
+    openSettings
+  );
+
+
+  /* CHIUDI MODALE */
+
+  modalClose?.addEventListener(
+    "click",
+    closeSettings
+  );
+
+
+  /* SALVA PREFERENZE */
+
+  save?.addEventListener("click", function () {
+
+    savePreferences({
+
+      necessary: true,
+      external: external.checked
+
+    });
+
+  });
+
+
+  /* PULSANTE COOKIE FISSO */
+
+  preferencesButton?.addEventListener(
+    "click",
+    openSettings
+  );
+
+
+  /* CLICK FUORI DAL MODALE */
+
+  modal?.addEventListener("click", function (event) {
+
+    if (event.target === modal) {
+
+      closeSettings();
+
+    }
+
+  });
+
+
+  /* ESC */
+
+  document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+      closeSettings();
+
+    }
+
+  });
+
+
+  /* AVVIO */
+
+  const savedPreferences = getPreferences();
+
+  if (savedPreferences) {
+
+    applyPreferences(savedPreferences);
+
+  } else {
+
+    setTimeout(function () {
+
+      showBanner();
+
+    }, 500);
+
+  }
+
+})();
 
