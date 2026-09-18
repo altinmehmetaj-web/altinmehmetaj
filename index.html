@@ -1325,9 +1325,153 @@ document.addEventListener("DOMContentLoaded", function () {
         ACCETTA TUTTI
       </button>
     </div>
+</div>
+   <!-- ============================================================
+     COOKIE PERSONALIZZA
+     ============================================================ -->
+
+<div
+  id="cookieModal"
+  class="cookie-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookieModalTitle"
+  aria-hidden="true">
+
+  <div class="cookie-modal-box">
+
+    <button
+      type="button"
+      class="cookie-modal-close"
+      id="cookieModalClose"
+      aria-label="Chiudi">
+      ×
+    </button>
+
+    <div class="cookie-kicker">
+      PREFERENZE COOKIE
+    </div>
+
+    <h3 id="cookieModalTitle">
+      Scegli come<br>
+      <strong>utilizzare i cookie.</strong>
+    </h3>
+
+    <p class="cookie-modal-intro">
+      Puoi scegliere quali strumenti autorizzare.
+      I cookie tecnici necessari al funzionamento del sito
+      non possono essere disattivati.
+    </p>
+
+
+    <!-- COOKIE NECESSARI -->
+
+    <div class="cookie-option">
+
+      <div class="cookie-option-text">
+
+        <strong>Cookie necessari</strong>
+
+        <span>
+          Necessari per il corretto funzionamento del sito.
+        </span>
+
+      </div>
+
+      <div class="cookie-switch cookie-switch-disabled">
+
+        <input
+          type="checkbox"
+          checked
+          disabled
+          aria-label="Cookie necessari sempre attivi">
+
+        <span class="cookie-slider"></span>
+
+      </div>
+
+    </div>
+
+
+    <!-- GOOGLE ANALYTICS -->
+
+    <div class="cookie-option">
+
+      <div class="cookie-option-text">
+
+        <strong>Google Analytics</strong>
+
+        <span>
+          Ci aiuta a capire come viene utilizzato il sito,
+          ad esempio quante persone lo visitano e quali pagine
+          vengono consultate.
+        </span>
+
+      </div>
+
+      <label class="cookie-switch">
+
+        <input
+          type="checkbox"
+          id="cookieAnalytics"
+          aria-label="Consenti Google Analytics">
+
+        <span class="cookie-slider"></span>
+
+      </label>
+
+    </div>
+
+
+    <!-- YOUTUBE / CONTENUTI ESTERNI -->
+
+    <div class="cookie-option">
+
+      <div class="cookie-option-text">
+
+        <strong>Contenuti esterni / YouTube</strong>
+
+        <span>
+          Permette di visualizzare contenuti incorporati
+          provenienti da servizi esterni come YouTube.
+        </span>
+
+      </div>
+
+      <label class="cookie-switch">
+
+        <input
+          type="checkbox"
+          id="cookieExternal"
+          aria-label="Consenti contenuti esterni">
+
+        <span class="cookie-slider"></span>
+
+      </label>
+
+    </div>
+
+
+    <!-- AZIONI -->
+
+    <div class="cookie-modal-actions">
+
+      <button
+        type="button"
+        id="cookieSave"
+        class="cookie-btn cookie-btn-primary">
+        SALVA PREFERENZE
+      </button>
+
+    </div>
+
+    <p class="cookie-modal-note">
+      Puoi modificare le tue preferenze in qualsiasi momento
+      utilizzando il pulsante Cookie presente sul sito.
+    </p>
 
   </div>
-</div>
-          
+
+</div>       
 </body>
 </html>
