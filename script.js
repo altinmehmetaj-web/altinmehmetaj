@@ -345,33 +345,6 @@ if (testimonialCards.length) {
     }
 
   }
-    /* ============================================================
-     SALVA PREFERENZE — CLICK
-     ============================================================ */
-
-  save?.addEventListener(
-    "click",
-    function () {
-
-      savePreferences({
-
-        necessary: true,
-
-        analytics:
-          analytics
-            ? analytics.checked
-            : false,
-
-        external:
-          external
-            ? external.checked
-            : false
-
-      });
-
-    }
-  );
-
 
   /* ============================================================
      APPLICA PREFERENZE
@@ -618,30 +591,30 @@ function openSettings() {
   );
 
 
-  /* ============================================================
-     SALVA PREFERENZE
-     ============================================================ */
+/* ============================================================
+   SALVA PREFERENZE
+   ============================================================ */
 
-  save?.addEventListener(
-    "click",
-    function () {
+save?.addEventListener(
+  "click",
+  function () {
 
-      savePreferences({
+    savePreferences({
+      necessary: true,
 
-        necessary: true,
+      analytics:
+        analytics
+          ? analytics.checked
+          : false,
 
-        analytics: false,
+      external:
+        external
+          ? external.checked
+          : false
+    });
 
-        external:
-          external
-            ? external.checked
-            : false
-
-      });
-
-    }
-  );
-
+  }
+);
 
   /* ============================================================
      PULSANTE COOKIE FISSO
