@@ -433,50 +433,61 @@ if (testimonialCards.length) {
   }
 
 
-  /* ============================================================
-     APRI IMPOSTAZIONI
-     ============================================================ */
+/* ============================================================
+   APRI IMPOSTAZIONI
+   ============================================================ */
 
-  function openSettings() {
+function openSettings() {
 
-    const preferences =
-      getPreferences();
+  const preferences =
+    getPreferences();
 
 
-    if (preferences) {
+  if (preferences) {
 
-      if (external) {
+    if (analytics) {
 
-        external.checked =
-          preferences.external === true;
-
-      }
-
-    } else {
-
-      if (external) {
-
-        external.checked = false;
-
-      }
+      analytics.checked =
+        preferences.analytics === true;
 
     }
 
+    if (external) {
 
-    if (modal) {
+      external.checked =
+        preferences.external === true;
 
-      modal.classList.add("show");
+    }
 
-      modal.setAttribute(
-        "aria-hidden",
-        "false"
-      );
+  } else {
+
+    if (analytics) {
+
+      analytics.checked = false;
+
+    }
+
+    if (external) {
+
+      external.checked = false;
 
     }
 
   }
 
 
+  if (modal) {
+
+    modal.classList.add("show");
+
+    modal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+  }
+
+}
   /* ============================================================
      CHIUDI IMPOSTAZIONI
      ============================================================ */
