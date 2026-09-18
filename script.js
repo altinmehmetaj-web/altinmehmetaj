@@ -345,6 +345,32 @@ if (testimonialCards.length) {
     }
 
   }
+    /* ============================================================
+     SALVA PREFERENZE — CLICK
+     ============================================================ */
+
+  save?.addEventListener(
+    "click",
+    function () {
+
+      savePreferences({
+
+        necessary: true,
+
+        analytics:
+          analytics
+            ? analytics.checked
+            : false,
+
+        external:
+          external
+            ? external.checked
+            : false
+
+      });
+
+    }
+  );
 
 
   /* ============================================================
