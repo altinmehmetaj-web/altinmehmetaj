@@ -282,6 +282,7 @@ if (testimonialCards.length) {
 
   const save = document.getElementById("cookieSave");
   const external = document.getElementById("cookieExternal");
+  const analytics = document.getElementById("cookieAnalytics");
 
   const preferencesButton =
     document.getElementById("cookiePreferences");
