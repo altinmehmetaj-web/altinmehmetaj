@@ -263,7 +263,7 @@ if (testimonialCards.length) {
 
 }
 /* ============================================================
-   GESTIONE COOKIE
+   GESTIONE COOKIE + GOOGLE ANALYTICS
    ============================================================ */
 
 (function () {
@@ -293,6 +293,10 @@ if (testimonialCards.length) {
   if (!banner) return;
 
 
+  /* ============================================================
+     LEGGI PREFERENZE SALVATE
+     ============================================================ */
+
   function getPreferences() {
 
     try {
@@ -313,6 +317,10 @@ if (testimonialCards.length) {
   }
 
 
+  /* ============================================================
+     SALVA PREFERENZE
+     ============================================================ */
+
   function savePreferences(preferences) {
 
     localStorage.setItem(
@@ -323,22 +331,51 @@ if (testimonialCards.length) {
     applyPreferences(preferences);
 
     banner.classList.remove("show");
-    modal.classList.remove("show");
 
-    modal.setAttribute("aria-hidden", "true");
+    if (modal) {
+
+      modal.classList.remove("show");
+
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+    }
 
   }
 
+
+  /* ============================================================
+     APPLICA PREFERENZE
+     ============================================================ */
 
   function applyPreferences(preferences) {
 
     if (!preferences) return;
 
 
-    /*
-     * CONTENUTI ESTERNI
-     * YouTube viene caricato solo se autorizzato.
-     */
+    /* ==========================================================
+       GOOGLE ANALYTICS
+       ========================================================== */
+
+    if (typeof gtag === "function") {
+
+      gtag("consent", "update", {
+
+        analytics_storage:
+          preferences.analytics === true
+            ? "granted"
+            : "denied"
+
+      });
+
+    }
+
+
+    /* ==========================================================
+       CONTENUTI ESTERNI / YOUTUBE
+       ========================================================== */
 
     if (preferences.external === true) {
 
@@ -347,7 +384,9 @@ if (testimonialCards.length) {
         .forEach(function (element) {
 
           const src =
-            element.getAttribute("data-cookie-youtube");
+            element.getAttribute(
+              "data-cookie-youtube"
+            );
 
           if (!element.querySelector("iframe")) {
 
@@ -355,8 +394,11 @@ if (testimonialCards.length) {
               document.createElement("iframe");
 
             iframe.src = src;
+
             iframe.title =
-              element.getAttribute("data-title") ||
+              element.getAttribute(
+                "data-title"
+              ) ||
               "Video YouTube";
 
             iframe.allow =
@@ -365,7 +407,10 @@ if (testimonialCards.length) {
             iframe.allowFullscreen = true;
 
             element.innerHTML = "";
-            element.appendChild(iframe);
+
+            element.appendChild(
+              iframe
+            );
 
           }
 
@@ -376,6 +421,10 @@ if (testimonialCards.length) {
   }
 
 
+  /* ============================================================
+     MOSTRA BANNER
+     ============================================================ */
+
   function showBanner() {
 
     banner.classList.add("show");
@@ -383,80 +432,137 @@ if (testimonialCards.length) {
   }
 
 
+  /* ============================================================
+     APRI IMPOSTAZIONI
+     ============================================================ */
+
   function openSettings() {
 
-    const preferences = getPreferences();
+    const preferences =
+      getPreferences();
+
 
     if (preferences) {
 
-      external.checked =
-        preferences.external === true;
+      if (external) {
+
+        external.checked =
+          preferences.external === true;
+
+      }
 
     } else {
 
-      external.checked = false;
+      if (external) {
+
+        external.checked = false;
+
+      }
 
     }
 
-    modal.classList.add("show");
 
-    modal.setAttribute("aria-hidden", "false");
+    if (modal) {
+
+      modal.classList.add("show");
+
+      modal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+    }
 
   }
 
+
+  /* ============================================================
+     CHIUDI IMPOSTAZIONI
+     ============================================================ */
 
   function closeSettings() {
 
+    if (!modal) return;
+
     modal.classList.remove("show");
 
-    modal.setAttribute("aria-hidden", "true");
+    modal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
 
   }
 
 
-  /* ACCETTA TUTTI */
+  /* ============================================================
+     ACCETTA TUTTI
+     ============================================================ */
 
-  accept?.addEventListener("click", function () {
+  accept?.addEventListener(
+    "click",
+    function () {
 
-    savePreferences({
+      savePreferences({
 
-      necessary: true,
-      external: true
+        necessary: true,
 
-    });
+        analytics: true,
 
-  });
+        external: true
 
+      });
 
-  /* RIFIUTA */
-
-  reject?.addEventListener("click", function () {
-
-    savePreferences({
-
-      necessary: true,
-      external: false
-
-    });
-
-  });
+    }
+  );
 
 
-  /* X = nessun consenso */
+  /* ============================================================
+     RIFIUTA
+     ============================================================ */
 
-  close?.addEventListener("click", function () {
+  reject?.addEventListener(
+    "click",
+    function () {
 
-    savePreferences({
+      savePreferences({
 
-      necessary: true,
-      external: false
+        necessary: true,
 
-    });
+        analytics: false,
 
-  });
+        external: false
+
+      });
+
+    }
+  );
 
 
-  /* PERSONALIZZA */
+  /* ============================================================
+     X = NESSUN CONSENSO
+     ============================================================ */
+
+  close?.addEventListener(
+    "click",
+    function () {
+
+      savePreferences({
+
+        necessary: true,
+
+        analytics: false,
+
+        external: false
+
+      });
+
+    }
+  );
+
+
+  /* ============================================================
+     PERSONALIZZA
+     ============================================================ */
 
   settings?.addEventListener(
     "click",
@@ -464,7 +570,9 @@ if (testimonialCards.length) {
   );
 
 
-  /* CHIUDI MODALE */
+  /* ============================================================
+     CHIUDI MODALE
+     ============================================================ */
 
   modalClose?.addEventListener(
     "click",
@@ -472,21 +580,34 @@ if (testimonialCards.length) {
   );
 
 
-  /* SALVA PREFERENZE */
+  /* ============================================================
+     SALVA PREFERENZE
+     ============================================================ */
 
-  save?.addEventListener("click", function () {
+  save?.addEventListener(
+    "click",
+    function () {
 
-    savePreferences({
+      savePreferences({
 
-      necessary: true,
-      external: external.checked
+        necessary: true,
 
-    });
+        analytics: false,
 
-  });
+        external:
+          external
+            ? external.checked
+            : false
+
+      });
+
+    }
+  );
 
 
-  /* PULSANTE COOKIE FISSO */
+  /* ============================================================
+     PULSANTE COOKIE FISSO
+     ============================================================ */
 
   preferencesButton?.addEventListener(
     "click",
@@ -494,49 +615,69 @@ if (testimonialCards.length) {
   );
 
 
-  /* CLICK FUORI DAL MODALE */
+  /* ============================================================
+     CLICK FUORI DAL MODALE
+     ============================================================ */
 
-  modal?.addEventListener("click", function (event) {
+  modal?.addEventListener(
+    "click",
+    function (event) {
 
-    if (event.target === modal) {
+      if (
+        event.target === modal
+      ) {
 
-      closeSettings();
+        closeSettings();
 
-    }
-
-  });
-
-
-  /* ESC */
-
-  document.addEventListener("keydown", function (event) {
-
-    if (event.key === "Escape") {
-
-      closeSettings();
+      }
 
     }
+  );
 
-  });
+
+  /* ============================================================
+     ESC
+     ============================================================ */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (event.key === "Escape") {
+
+        closeSettings();
+
+      }
+
+    }
+  );
 
 
-  /* AVVIO */
+  /* ============================================================
+     AVVIO
+     ============================================================ */
 
-  const savedPreferences = getPreferences();
+  const savedPreferences =
+    getPreferences();
+
 
   if (savedPreferences) {
 
-    applyPreferences(savedPreferences);
+    applyPreferences(
+      savedPreferences
+    );
 
   } else {
 
-    setTimeout(function () {
+    setTimeout(
+      function () {
 
-      showBanner();
+        showBanner();
 
-    }, 500);
+      },
+      500
+    );
 
   }
 
 })();
-
