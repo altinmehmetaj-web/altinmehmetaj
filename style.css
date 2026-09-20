@@ -2921,7 +2921,6 @@ textarea{resize:vertical}
 /* ============================================================
    COOKIE BANNER — MOBILE COMPATTO
    ============================================================ */
-
 @media (max-width: 800px) {
 
   .cookie-banner {
@@ -2930,11 +2929,8 @@ textarea{resize:vertical}
     bottom: 12px !important;
     width: auto !important;
     max-width: none !important;
-
-    padding: 22px 20px 18px !important;
-
-    border-radius: 22px !important;
-
+    padding: 17px 17px 15px !important;
+    border-radius: 20px !important;
     box-sizing: border-box !important;
   }
 
@@ -2943,51 +2939,36 @@ textarea{resize:vertical}
   }
 
   .cookie-kicker {
-    font-size: 10px !important;
-    letter-spacing: .16em !important;
-    margin-bottom: 8px !important;
+    font-size: 8px !important;
+    letter-spacing: .15em !important;
+    margin-bottom: 6px !important;
   }
 
   .cookie-content h3 {
-    font-size: 26px !important;
+    font-size: 22px !important;
     line-height: 1.02 !important;
-    margin: 0 45px 10px 0 !important;
+    margin: 0 40px 8px 0 !important;
   }
 
   .cookie-content p {
-    font-size: 12px !important;
-    line-height: 1.45 !important;
-    margin-bottom: 10px !important;
+    font-size: 10.5px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 7px !important;
   }
 
   .cookie-content .cookie-small {
-    font-size: 11px !important;
-    line-height: 1.4 !important;
-    margin-bottom: 16px !important;
+    font-size: 9.5px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 12px !important;
   }
 
   .cookie-actions {
     display: grid !important;
     grid-template-columns: 1fr 1fr 1fr !important;
-    gap: 7px !important;
+    gap: 6px !important;
     width: 100% !important;
   }
 
   .cookie-btn {
-    min-height: 46px !important;
-    padding: 10px 5px !important;
-    font-size: 9px !important;
-    line-height: 1.1 !important;
-    letter-spacing: .06em !important;
-    white-space: normal !important;
-    border-radius: 12px !important;
-  }
-
-  .cookie-close {
-    top: 14px !important;
-    right: 14px !important;
-    width: 34px !important;
-    height: 34px !important;
-    font-size: 19px !important;
-  }
-}
+    min-height: 42px !important;
+    padding: 8px 
