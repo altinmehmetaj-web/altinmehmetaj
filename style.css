@@ -2971,4 +2971,19 @@ textarea{resize:vertical}
 
   .cookie-btn {
     min-height: 42px !important;
-    padding: 8px 
+    padding: 8px 4px !important;
+    font-size: 8px !important;
+    line-height: 1.05 !important;
+    letter-spacing: .04em !important;
+    white-space: normal !important;
+    border-radius: 10px !important;
+  }
+
+  .cookie-close {
+    top: 11px !important;
+    right: 11px !important;
+    width: 31px !important;
+    height: 31px !important;
+    font-size: 17px !important;
+  }
+}
